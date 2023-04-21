@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+  <title>Currency Exchange</title>
+</head>
+<body class="p-3 m-0">
+  <div class="container">
+    <h1>Welcome to the PDX Backyard Currency Exchange!</h1>
+    <form id="currency-exchange" class="row g-3">
+      <div class="col-md-2">
+        <label for="usd-input">Please enter an amount in US Dollars:</label>
+        <input id="usd-input" type="text" class="form-control" name="usd-input" required="">
+      </div>
+      <div class="col-md-3">
+      <label for="currency-exchange">Distance From Location:</label>
+        <select name="currency-exchange" id="currency-exchange" class="form-control" required>
+          <option disabled selected value> -- select an option -- </option>
+          <option value="" id=""></option>
+          <option value="" id=""></option>
+          <option value="" id=""></option>
+          <option value="" id=""></option>
+          <option value="" id=""></option>
+        </select>
+      </div>
+    </form>
+    <hr>
+    <h3>Currency Exchange Results:</h3>
+    <p id="showResponse"></p>
+  </div>
+</body>
+</html>
