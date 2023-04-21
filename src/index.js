@@ -21,7 +21,8 @@ function printError(error) {
 }
 
 function printElements(response, currency, currencyExchange) {
-  document.querySelector('#showResponse').innerText = `Your ${currency}$ exchange rate in ${currencyExchange} is ${response[0]}$.`;
+  console.log(response);
+  document.querySelector('#showResponse').innerText = `Your ${currency}$ exchange rate in ${currencyExchange} is ${response.conversion_rate}.`;
 }
 
 
