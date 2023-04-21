@@ -8,19 +8,12 @@
     <h1>Welcome to the PDX Backyard Currency Exchange!</h1>
     <form id="currency-exchange" class="row g-3">
       <div class="col-md-3">
-        <label for="usd-input">Please enter an amount in US Dollars:</label>
+        <label for="usd-input">Enter an amount in US Dollars:</label>
         <input id="usd-input" type="text" class="form-control" name="usd-input" required="">
       </div>
-      <div class="col-md-3">
-      <label for="currency-exchange">Choose from these 5 types of currency:</label>
-        <select name="currency-exchange" id="currency-exchange" class="form-control" required>
-          <option disabled selected value> -- select an option -- </option>
-          <option value="CAD" id="CAD">Canadian Dollar</option>
-          <option value="JPY" id="JPY">Japanese Yen</option>
-          <option value="MXN" id="MXN">Mexican Peso</option>
-          <option value="AED" id="AED">UAE Dirham</option>
-          <option value="ZAR" id="ZAR">South African Rand</option>
-        </select>
+      <div class="col-md-4">
+        <label for="currencyExchange">Input Currency Type:</label>
+        <input id="currencyExchange" type="text" class="form-control" name="currencyExchange" required="">
       </div>
       <div class="col-md-12">
       <button type="submit" class="btn btn-outline-primary btn-small" id="convert">Convert Currency</button>
