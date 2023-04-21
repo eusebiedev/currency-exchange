@@ -5,10 +5,10 @@ import CurrencyService from './currency-service';
 
 // Business Logic
 
-function getCurrency(currency) {
-  let promise = CurrencyService.getCurrency(currency);
+function getCurrency(currency, currencyExchange) {
+  let promise = CurrencyService.getCurrency(currency, currencyExchange);
   promise.then(function(response) {
-    printElements(response, currency);
+    printElements(response, currency, currencyExchange);
   }, function(errorMessage) {
     printError(errorMessage);
   });
@@ -21,7 +21,7 @@ function printError(error) {
 }
 
 function printElements(response, currency, currencyExchange) {
-  document.querySelector('#showResponse').innerText = `Your ${currency} exchange rate in ${currencyExchange} is ${response.conversion_rates}$.`;
+  document.querySelector('#showResponse').innerText = `Your ${currency}$ exchange rate in ${currencyExchange} is ${response[0]}$.`;
 }
 
 
