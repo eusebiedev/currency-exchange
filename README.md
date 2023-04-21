@@ -2,7 +2,7 @@
 
 #### By _**Eusebie Siebenberg**_
 
-#### _._
+#### _A practice application demonstrating API calls to perform currency conversion._
 
 ## Technologies Used
 
@@ -14,28 +14,32 @@
 * _Node.js v16.3.1_
 * _NPM v8.1.2_
 * _Webpack v4.46.0_
-* _ES Lint v8.18.0_
-* _Babel version"^7.18.6"_
-* _Webpack-cli version "^3.3.12"_
-* _Webpack-dev-server v3.11.3_
+* _Postman_
 
 ## Description
 
-_{This is a detailed description of your application. Give as much detail as needed to explain what the application does as well as any other information you want users or other developers to have.}_
+A Currency Converter application allowing the user to input an amount in USD, their 3 letter currency code, and view the amount exchanged. Built around the Exchange Rate API.
 
 ## Setup/Installation Requirements
 
-* _Download project repository from GH to local machine_
-* _Use local machine terminal to install all project packages using command ```$ npm install```_
-* _Use local machine terminal to build project using command ```$ npm build```_
-* _Use local machine terminal to start development server using command ```$ npm start```_
+* _Clone repository_
+* _Navigate to the root directory of project_
+* _Create a new ```.env``` file in the root directory using the ```touch .env``` command from your terminal_
+* _Add ```.env``` to the ```.gitignore``` file. Save, commit, and push this before moving on_
+* _Visit [Exchange Rate-API](https://www.exchangerate-api.com/), click on ```Get Free Key``` to sign up for a free account, navigate to your Dashboard to retrieve API Key_
+* _Open the ```.env``` file and add your key using this format API_KEY=[your key here], remove brackets and paste in key_
+* _Next, from your terminal run these commands:_
+* _```npm install``` to install packages and dependencies_
+* _```npm build``` to build the distribution and node folders_
+* _```npm start``` to open a developement server to run the application!_
 
 
 
-## Known Bugs
 
-* _Any known issues_
-* _should go here_
+## Known Bugs As of 04/21/23
+
+* _Error Handling is not functioning properly_
+* _Currently results are not calculated properly_
 
 ## License
 
