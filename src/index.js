@@ -5,30 +5,33 @@ import CurrencyService from './currency-service';
 
 // Business Logic
 
-async function getCurrency(usdInput, currencyOutput, exchange) {
-  const response = await CurrencyService.getCurrency(usdInput, currencyOutput, exchange);
-  if (response.results) {
-    printElements(response, usdInput, currencyOutput, exchange);
-  } else {
-    printError(response, usdInput, currencyOutput, exchange);
-  }
+function getCurrency(currency) {
+  let promise = CurrencyService.getCurrency(currency);
+  promise.then(function(response) {
+    printElements(response, currency);
+  }, function(errorMessage) {
+    printError(errorMessage);
+  });
 }
 
 // UI Logic
 
-function printElements(response, usdInput, currencyOutput, exchange) {
-  document.querySelector('#showResponse').innerText = `Your ${usdInput} exchange rate is ${response.conversion_rate} ${currencyOutput}, and comes to ${exchange} to $.`;
+function printError(error) {
+  document.querySelector('#showResponse').innerText = `There was an error converting the currency data: ${error}`;
 }
 
-function printError(error, usdInput, currencyOutput) {
-  document.querySelector('#showResponse').innerText = `There was an error converting the currency data for ${usdInput} to ${currencyOutput} ${error.statusText}: ${error.message}`;
+function printElements(response, currency, currencyExchange) {
+  document.querySelector('#showResponse').innerText = `Your ${currency} exchange rate in ${currencyExchange} is ${response.conversion_rates}$.`;
 }
+
 
 function handleFormSubmission(event) {
   event.preventDefault();
   const currency = document.querySelector('#usd-input').value;
+  const currencyExchange = document.querySelector('#currencyExchange').value;
   document.querySelector('#usd-input').value = null;
-  getCurrency(currency);
+  document.querySelector('#currencyExchange').value = null;
+  getCurrency(currency, currencyExchange);
 }
 
 window.addEventListener("load", function() {
