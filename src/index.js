@@ -20,10 +20,9 @@ function printError(error) {
   document.querySelector('#showResponse').innerText = `There was an error converting the currency data: ${error}`;
 }
 
-function printElements(data, currency, currencyExchange) {
-  document.querySelector('#showResponse').innerText = `Your ${currency}$ exchange rate in ${currencyExchange} is ${data[0].conversion_rates}.`;
+function printElements(response, currency, currencyExchange) {
+  document.querySelector('#showResponse').innerText = `Your ${currency}$ exchange rate in ${currencyExchange} is ${response.conversion_rates}`;
 }
-
 
 function handleFormSubmission(event) {
   event.preventDefault();
