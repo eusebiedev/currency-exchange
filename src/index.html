@@ -12,15 +12,18 @@
         <input id="usd-input" type="text" class="form-control" name="usd-input" required="">
       </div>
       <div class="col-md-3">
-      <label for="currency-exchange">Distance From Location:</label>
+      <label for="currency-exchange">Choose from these 5 types of currency:</label>
         <select name="currency-exchange" id="currency-exchange" class="form-control" required>
           <option disabled selected value> -- select an option -- </option>
-          <option value="" id=""></option>
-          <option value="" id=""></option>
-          <option value="" id=""></option>
-          <option value="" id=""></option>
-          <option value="" id=""></option>
+          <option value="CAD" id="CAD">Canadian Dollar</option>
+          <option value="JPY" id="JPY">Japanese Yen</option>
+          <option value="MXN" id="MXN">Mexican Peso</option>
+          <option value="AED" id="AED">UAE Dirham</option>
+          <option value="ZAR" id="ZAR">South African Rand</option>
         </select>
+      </div>
+      <div class="col-md-12">
+      <button type="submit" class="btn btn-outline-primary btn-small" id="convert">Convert Currency</button>
       </div>
     </form>
     <hr>
