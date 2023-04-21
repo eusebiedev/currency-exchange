@@ -5,24 +5,23 @@ import CurrencyService from './currency-service';
 
 // Business Logic
 
-function getCurrency(currency) {
-  let promise = CurrencyService.getCurrency(currency);
-  promise.then(function(response) {
-    printElements(response);
-  }, function(errorMessage) {
-    printError(errorMessage);
-  });
+async function getCurrency(usdInput, currencyOutput, exchange) {
+  const promise = await CurrencyService.getCurrency(usdInput, currencyOutput, exchange);
+  if (response.results) {
+    printElements(response, usdInput, currencyOutput, exchange);
+  } else {
+    printError(responise, usdInput, currencyOutput, exchange);
+  }
 }
 
 // UI Logic
 
-function printElements(data) {
-  document.querySelector('#showResponse').innerText = `The humidity in ${data[1]} is ${data[0].main.humidity}%.
-  The temperature in Farenheit is ${data[0].main.temp} degrees.`;
+function printElements(response, usdInput, currencyOutput, exchange) {
+  document.querySelector('#showResponse').innerText = `Your ${usdInput} exchange rate is ${response.conversion_rate} to $.`;
 }
 
-function printError(error) {
-  document.querySelector('#showResponse').innerText = `There was an error accessing the weather data for ${error[2]}: ${error[0].status} ${error[0].statusText}: ${error[1].message}`;
+function printError(error, usdInput, currencyOutput) {
+  document.querySelector('#showResponse').innerText = `There was an error converting the currency data for ${usdInput} to ${currencyOutput} ${error.statusText}: ${error.message}`;
 }
 
 function handleFormSubmission(event) {
