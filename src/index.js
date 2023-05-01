@@ -5,39 +5,34 @@ import CurrencyConverter from './exchange-service';
 
 // Business Logic
 
-async function returnExchange(currency, currencyExchange) {
-  const response = await CurrencyConverter.returnExchange(currency, currencyExchange);
-  let rate = response.conversion_rates[currencyExchange];
-  let total = getTotal(currency, rate);
+async function returnExchange(currency, currencyExchange, currencyExchangeOut) {
+  const response = await CurrencyConverter.returnExchange(currency, currencyExchange, currencyExchangeOut);
   if (response.result) {
-    printElements(total, currency, currencyExchange);
-  } else if (response.result === "unsupported-code") {
-    printError(response, currencyExchange);
+    printElements(response, currency, currencyExchange, currencyExchangeOut);
+  } else {
+    printError(response, currency, currencyExchange, currencyExchangeOut);   
   }
-}
-
-function getTotal(userInput, output) {
-  let total = userInput * output;
-  return total;
 }
 
 // UI Logic
 
-function printElements(total, currency, currencyExchange) {
-  document.querySelector('#showResponse').innerText = `Your $${currency} exchange rate in ${currencyExchange} is $${total.toFixed(2)}`;
+function printElements(response, currency, currencyExchange, currencyExchangeOut) {
+  document.querySelector('#showResponse').innerText = `Your $${currencyExchangeOut} in ${currency} to ${currencyExchange} exchange rate amount is $${response.conversion_result.toFixed(2)} `;
 }
 
 function printError(error) {
-  document.querySelector("#showResponse").innerText = `The currency you selected is invalid:  ${error}`;
+  document.querySelector("#showResponse").innerText = `The currency you selected is not a valid code: ${error}`;
 }
 
 function handleFormSubmission(event) {
   event.preventDefault();
   const currency = document.querySelector('#currency').value;
   const currencyExchange = document.querySelector('#currencyExchange').value;
+  const currencyExchangeOut = document.querySelector('#currencyExchangeOut').value;
   document.querySelector('#currency').value = null;
   document.querySelector('#currencyExchange').value = null;
-  returnExchange(currency, currencyExchange);
+  document.querySelector('#currencyExchangeOut').value = null;
+  returnExchange(currencyExchange, currencyExchangeOut, currency);
 }
 
 window.addEventListener("load", function() {
