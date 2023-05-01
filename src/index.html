@@ -8,15 +8,35 @@
     <h1>Welcome to the PDX Backyard Currency Exchange!</h1>
     <form id="currency-exchange" class="row g-3">
       <div class="col-md-3">
-        <label for="currency">Enter an amount in US Dollars:</label>
+        <label for="currency">Enter an amount to convert:</label>
         <input id="currency" type="number" class="form-control" name="currency" required="">
       </div>
       <div class="col-md-4">
-        <label for="currencyExchange">Enter Currency Code:</label>
-        <input id="currencyExchange" type="text" class="form-control" name="currencyExchange">
+        <label for="currencyExchange">Select a currency to start from:</label>
+        <select id="currencyExchange" name="currencyExchange" class="form-control">
+          <option value="">Please Select a Currency:</option>
+          <option value="USD">USD - US Dollar</option>
+          <option value="JPY">JPY - Japanese Yen</option>
+          <option value="MXN">MXN - Mexican Peso</option>
+          <option value="ZAR">ZAR - South Arican Rand</option>
+          <option value="AED">AED - UAE Dirham</option>
+        </select>
       </div>
       <div class="col-md-4">
-      <p>*If you don't know your 3 letter currency code, visit this link to find it: <a href="https://www.exchangerate-api.com/docs/supported-currencies" target="_blank">Exchange Rate - Supported Currencies</a></p>
+        <label for="currencyExchangeOut">Select a currency to convert to:</label>
+        <select id="currencyExchangeOut" name="currencyExchangeOut" class="form-control">
+          <option value="">Please Select a Currency:</option>
+          <option value="CAD">CAD - Canadian Dollar</option>
+          <option value="JPY">JPY - Japanese Yen</option>
+          <option value="MXN">MXN - Mexican Peso</option>
+          <option value="ZAR">ZAR - South Arican Rand</option>
+          <option value="AED">AED - UAE Dirham</option>
+          <option value="ATI">ATI - Atlantic Transnational Currency</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+      <p>*If you don't know your 3 letter currency code, visit this link to find it: <a href="https://www.exchangerate-api.com/docs/supported-currencies" target="_blank">Exchange Rate - Supported Currencies</a>
+      </p>
       </div>
       <div class="col-md-12">
       <button type="submit" class="btn btn-outline-primary btn-small" id="convert">Convert Currency</button>
