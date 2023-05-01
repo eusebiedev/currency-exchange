@@ -36,10 +36,9 @@ A Currency Converter application allowing the user to input an amount in USD, th
 
 
 
-## Known Bugs As of 04/21/23
+## Known Bugs As of 05/01/23
 
-* _Error Handling is not functioning properly_
-* _Currently results are not calculated properly_
+* _No known bugs_
 
 ## License
 
