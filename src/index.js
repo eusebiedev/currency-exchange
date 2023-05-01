@@ -5,23 +5,30 @@ import CurrencyConverter from './exchange-service';
 
 // Business Logic
 
-function returnExchange(currency, currencyExchange) {
-  let promise = CurrencyConverter.returnExchange(currency, currencyExchange);
-  promise.then(function(response) {
-    printElements(response);
-  }, function(errorMessage) {
-    printError(errorMessage);
-  });
+async function returnExchange(currency, currencyExchange) {
+  const response = await CurrencyConverter.returnExchange(currency, currencyExchange);
+  let rate = response.conversion_rates[currencyExchange];
+  let total = getTotal(currency, rate);
+  if (response.result) {
+    printElements(total, currency, currencyExchange);
+  } else if (response.result === "unsupported-code") {
+    printError(response, currencyExchange);
+  }
+}
+
+function getTotal(userInput, output) {
+  let total = userInput * output;
+  return total;
 }
 
 // UI Logic
 
-function printError(error) {
-  document.querySelector('#showResponse').innerText = `There was an error converting the currency data: ${error} ${error[0].status} ${error[1].status}`;
+function printElements(total, currency, currencyExchange) {
+  document.querySelector('#showResponse').innerText = `Your $${currency} exchange rate in ${currencyExchange} is $${total.toFixed(2)}`;
 }
 
-function printElements(response,) {
-  document.querySelector('#showResponse').innerText = `Your ${response[1]}$ exchange rate in ${response[2]} is ${response[0].conversion_result}`;
+function printError(error) {
+  document.querySelector("#showResponse").innerText = `The currency you selected is invalid:  ${error}`;
 }
 
 function handleFormSubmission(event) {
